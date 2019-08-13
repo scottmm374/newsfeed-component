@@ -88,8 +88,71 @@ const data = [
   }
 ];
 
-/* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
-  
+
+const title = document.createElement('h2');
+headTwo.textContent = data['title']
+
+
+const date = document.createElement('p');
+date.classList.add('date');
+date.textContent = data['date']
+
+
+const paragraph = document.createElement('p')
+paragraph[0].textContent = data["firstParagraph"]
+paragraph[1].textContent = data["secondParagraph"]
+paragraph[2].textContent = data["thirdParagraph"]
+
+
+
+const span = document.createElement('span')
+span.classList.add('expandButton')
+span.addEventListener('click', () => {
+  span.classList.toggle('article-open')
+})
+
+
+
+
+// const paragraphOne = (firstParagraph) => {
+//   const paraOne = document.createElement('p');
+//   paraOne.textContent = firstParagraph;
+//   return paraOne;
+
+// }
+// const paragraphTwo = (secondParagraph) => {
+//   const paraTwo = document.createElement('p');
+//   paraOne.textContent = secondParagraph;
+//   return paraTwo;
+
+// }
+
+// const paragraphThree = (thirdParagraph) => {
+//   const paraThree = document.createElement('p');
+//   paraOne.textContent = thirdParagraph;
+//   return paraThree;
+
+// }
+
+const articleContainer = () => {
+  const div = document.createElement('div');
+  div.classList.add('article')
+  return div;
+}
+
+const spanElement = () => {
+  const span = document.createElement('span')
+  span.classList.add('expandButton')
+  return span;
+}
+
+
+
+/* Step 1: Create a function that creates a component. You will want your component to look like the template below:
+
+
+
+
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
