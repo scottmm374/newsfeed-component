@@ -89,20 +89,31 @@ const data = [
 ];
 
 
+
+
+
 const title = document.createElement('h2');
-headTwo.textContent = data['title']
+title.textContent = data[0].title
+console.log('title', title)
 
 
 const date = document.createElement('p');
 date.classList.add('date');
-date.textContent = data['date']
+date.textContent = data[0].date
+console.log('date', date)
 
 
-const paragraph = document.createElement('p')
-paragraph[0].textContent = data["firstParagraph"]
-paragraph[1].textContent = data["secondParagraph"]
-paragraph[2].textContent = data["thirdParagraph"]
+const paraOne = document.createElement('p')
+paraOne.textContent = data[0].firstParagraph
+console.log(paraOne)
 
+const paraTwo = document.createElement('p')
+paraTwo.textContent = data[0].secondParagraph
+console.log(paraTwo)
+
+const paraThree = document.createElement('p')
+paraThree.textContent = data[0].thirdParagraph
+console.log(paraThree)
 
 
 const span = document.createElement('span')
@@ -111,40 +122,27 @@ span.addEventListener('click', () => {
   span.classList.toggle('article-open')
 })
 
+console.log('span', span)
 
 
 
-// const paragraphOne = (firstParagraph) => {
-//   const paraOne = document.createElement('p');
-//   paraOne.textContent = firstParagraph;
-//   return paraOne;
+const divContainer = (title, date, paraOne, paraTwo, paraThree) => {
+  const div = document.querySelector('.articles')
+  div.appendChild(title)
+  div.appendChild(date)
+  div.appendChild(paraOne)
+  div.appendChild(paraTwo)
+  div.appendChild(paraThree)
+  return div
 
-// }
-// const paragraphTwo = (secondParagraph) => {
-//   const paraTwo = document.createElement('p');
-//   paraOne.textContent = secondParagraph;
-//   return paraTwo;
-
-// }
-
-// const paragraphThree = (thirdParagraph) => {
-//   const paraThree = document.createElement('p');
-//   paraOne.textContent = thirdParagraph;
-//   return paraThree;
-
-// }
-
-const articleContainer = () => {
-  const div = document.createElement('div');
-  div.classList.add('article')
-  return div;
 }
 
-const spanElement = () => {
-  const span = document.createElement('span')
-  span.classList.add('expandButton')
-  return span;
+console.log(divContainer(title, date, paraOne, paraTwo, paraThree))
+
+function ArtComponent(obj) {
+
 }
+
 
 
 
