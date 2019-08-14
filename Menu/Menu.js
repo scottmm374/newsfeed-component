@@ -30,7 +30,7 @@ const createMenu = (arr) => {
 
   const button = document.querySelector('.menu-button');
   button.addEventListener('click', () => {
-    button.classList.toggle('.menu-open')
+    button.classList.toggle('.menu--open')
   })
 
   return menu;
