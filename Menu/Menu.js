@@ -19,23 +19,29 @@ const createList = (item) => {
 
 console.log(createList(menuItems))
 
+// This works, created my UL and LI correctly
 const createMenu = (arr) => {
   const menu = document.createElement('ul')
   menu.classList.add('.menu')
   const newList = arr.map((item) => createList(item));
   newList.forEach((item) => menu.appendChild(item));
 
+  // event expands menu when clicked. 
+
   const button = document.querySelector('.menu-button');
   button.addEventListener('click', () => {
-    menu.classList.toggle('.menu-open')
+    button.classList.toggle('.menu-open')
   })
 
   return menu;
 }
 
+
 const mainMenu = createMenu(menuItems)
 const menuContainer = document.querySelector('.menu-button')
 menuContainer.appendChild(mainMenu)
+
+console.log('menuContainer', menuContainer)
 
 
 /*
