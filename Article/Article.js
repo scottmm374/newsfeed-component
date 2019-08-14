@@ -90,59 +90,63 @@ const data = [
 
 
 
+const articleContainer = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
+  const HeadTitle = document.createElement('h2');
+  HeadTitle.textContent = title
+console.log('HeadTitle', HeadTitle)
 
 
-const title = document.createElement('h2');
-title.textContent = data[0].title
-console.log('title', title)
 
-
-const date = document.createElement('p');
-date.classList.add('date');
-date.textContent = data[0].date
-console.log('date', date)
+const CurrentDate = document.createElement('p');
+CurrentDate.classList.add('date');
+CurrentDate.textContent = date;
+console.log('CurrentDate', CurrentDate)
 
 
 const paraOne = document.createElement('p')
-paraOne.textContent = data[0].firstParagraph
-console.log(paraOne)
+paraOne.textContent = firstParagraph
+console.log("p1", paraOne)
 
 const paraTwo = document.createElement('p')
-paraTwo.textContent = data[0].secondParagraph
-console.log(paraTwo)
+paraTwo.textContent = secondParagraph
+console.log('p2', paraTwo)
 
 const paraThree = document.createElement('p')
-paraThree.textContent = data[0].thirdParagraph
-console.log(paraThree)
+paraThree.textContent = thirdParagraph
+console.log('p3', paraThree)
 
 
 const span = document.createElement('span')
 span.classList.add('expandButton')
-span.addEventListener('click', () => {
-  span.classList.toggle('article-open')
+span.textContent = "Expand"
+span.addEventListener('click', (event) => {
+  event.target.classList.toggle('article-open')
 })
 
 console.log('span', span)
 
 
 
-const divContainer = (title, date, paraOne, paraTwo, paraThree) => {
-  const div = document.querySelector('.articles')
-  div.appendChild(title)
-  div.appendChild(date)
-  div.appendChild(paraOne)
-  div.appendChild(paraTwo)
-  div.appendChild(paraThree)
-  return div
+  const divArticle = document.createElement('div')
+  divArticle.classList.add('article')
+  divArticle.appendChild(HeadTitle)
+  divArticle.appendChild(CurrentDate)
+  divArticle.appendChild(paraOne)
+  divArticle.appendChild(paraTwo)
+  divArticle.appendChild(paraThree)
+  divArticle.appendChild(span)
+ 
+return divArticle
 
 }
 
-console.log(divContainer(title, date, paraOne, paraTwo, paraThree))
+const articles = document.querySelector('.articles');
+  data.forEach(item => {
+    articles.appendChild(articleContainer(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph))
+  })
 
-function ArtComponent(obj) {
 
-}
-
+console.log(articles)
 
 
 
