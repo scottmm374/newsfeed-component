@@ -85,11 +85,94 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'New Article',
+    date: 'Jan 1st, 2003',
+    firstParagraph: `Hodor hodor HODOR! Hodor hodor - hodor, hodor. Hodor hodor... Hodor hodor hodor; hodor hodor. Hodor hodor hodor, hodor, hodor
+          hodor. Hodor, hodor. Hodor. Hodor, hodor - hodor... Hodor hodor hodor; hodor HODOR hodor, hodor hodor?! Hodor hodor, hodor.
+          Hodor hodor hodor hodor hodor! Hodor hodor - HODOR hodor, hodor hodor hodor hodor hodor; hodor hodor? `,
+
+    secondParagraph: `Hodor, hodor. Hodor. Hodor, hodor, hodor. Hodor hodor, hodor. Hodor hodor, hodor, hodor hodor. Hodor! Hodor hodor, hodor;
+          hodor hodor hodor? Hodor, hodor. Hodor. Hodor, hodor - HODOR hodor, hodor hodor hodor! Hodor, hodor. Hodor. Hodor, HODOR
+          hodor, hodor hodor, hodor, hodor hodor. Hodor hodor - hodor - hodor... Hodor hodor hodor hodor hodor hodor hodor?! Hodor
+          hodor - hodor hodor hodor. Hodor. Hodor hodor... Hodor hodor hodor hodor hodor? `,
+
+    thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
+          Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
+          Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
 ];
 
-/* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
-  
+
+
+const articleContainer = (title, date, firstParagraph, secondParagraph, thirdParagraph) => {
+
+  const HeadTitle = document.createElement('h2');
+  HeadTitle.textContent = title
+  // console.log('HeadTitle', HeadTitle)
+
+
+
+  const CurrentDate = document.createElement('p');
+  CurrentDate.classList.add('date');
+  CurrentDate.textContent = date;
+  // console.log('CurrentDate', CurrentDate)
+
+
+  const paraOne = document.createElement('p')
+  paraOne.textContent = firstParagraph
+  // console.log("p1", paraOne)
+
+  const paraTwo = document.createElement('p')
+  paraTwo.textContent = secondParagraph
+  // console.log('p2', paraTwo)
+
+  const paraThree = document.createElement('p')
+  paraThree.textContent = thirdParagraph
+  // console.log('p3', paraThree)
+
+
+  const span = document.createElement('span')
+  span.classList.add('expandButton')
+  span.textContent = "Expand"
+  span.addEventListener('click', () => divArticle.classList.toggle('article-open'));
+
+  // console.log('span', span)
+
+
+
+  const divArticle = document.createElement('div')
+  divArticle.classList.add('article')
+  divArticle.appendChild(HeadTitle)
+  divArticle.appendChild(CurrentDate)
+  divArticle.appendChild(paraOne)
+  divArticle.appendChild(paraTwo)
+  divArticle.appendChild(paraThree)
+  divArticle.appendChild(span)
+
+  console.log('divArticle',divArticle)
+
+  return divArticle
+
+}
+
+
+const articles = document.querySelector('.articles');
+data.forEach(item => {
+  articles.appendChild(articleContainer(item.title, item.date, item.firstParagraph, item.secondParagraph, item.thirdParagraph))
+})
+
+
+// console.log(articles)
+
+
+
+/* Step 1: Create a function that creates a component. You will want your component to look like the template below:
+
+
+
+
   <div class="article">
     <h2>{title of the article}</h2>
     <p class="date">{date of the article}</p>
